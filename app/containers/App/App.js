@@ -10,7 +10,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
+import SettingsPage from 'containers/SettingsPage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import './style.scss';
@@ -20,7 +20,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/features" component={FeaturePage} />
+      <Route path="/settings" component={SettingsPage} />
       <Route path="" component={NotFoundPage} />
     </Switch>
   </div>

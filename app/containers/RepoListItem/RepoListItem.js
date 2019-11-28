@@ -28,7 +28,7 @@ export default class RepoListItem extends React.PureComponent { // eslint-disabl
           {nameprefix + item.name}
         </a>
         <a className="repo-list-item__issue-link" href={`${item.html_url}/issues`} target="_blank" rel="noopener noreferrer">
-          <IssueIcon className="repo-list-item__issue-icon" />
+          <b>i</b>
           {item.open_issues_count}
         </a>
       </div>
