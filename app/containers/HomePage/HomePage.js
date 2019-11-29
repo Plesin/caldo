@@ -6,11 +6,30 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import ReposList from 'components/ReposList';
 import './style.scss';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+const todos = [
+  { title: 'Viola', desc: 'poplatek', created: 0, priority: 1, done: false },
+  { title: 'Yi - Reklamace', desc: '', created: 0, priority: 1, done: false },
+  {
+    title: 'Chata - Elektrika',
+    desc: 'Rozpocitat elektriku na sousedy',
+    created: 0,
+    priority: 1,
+    done: false,
+  },
+  {
+    title: 'Kancl - Nabytek',
+    desc: 'stul, zidle, skrinka',
+    created: 0,
+    priority: 1,
+    done: false,
+  },
+];
+
+export default class HomePage extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
    */
@@ -22,30 +41,35 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
   }
 
   render() {
-    const {
-      loading, error, repos, username, onChangeUsername, onSubmitForm
-    } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos
-    };
+    // const {
+    // loading,
+    // error,
+    // repos,
+    // username,
+    // onChangeUsername,
+    // onSubmitForm,
+    // } = this.props;
+    // const reposListProps = {
+    //   loading,
+    //   error,
+    //   repos,
+    // };
 
     return (
       <article>
-        <Helmet>
-          <title>Home Page</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
-        </Helmet>
         <div className="home-page">
-          <section className="centered">
-            <h2>Start your next react project in seconds</h2>
-            <p>
-              A minimal <i>React-Redux</i> boilerplate with all the best practices
-            </p>
-          </section>
           <section>
-            <h2>Try me!</h2>
+            {todos.map((td, index) => (
+              <div key={index}>
+                <h1>{td.title}</h1>
+                <span>{td.desc}</span>
+                <i>{td.created}</i>
+                <span>{td.priority}</span>
+                <span>{td.done}</span>
+              </div>
+            ))}
+          </section>
+          {/* <section>
             <form onSubmit={onSubmitForm}>
               <label htmlFor="username">
                 Show Github repositories by
@@ -60,7 +84,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
               </label>
             </form>
             <ReposList {...reposListProps} />
-          </section>
+          </section> */}
         </div>
       </article>
     );
@@ -73,5 +97,6 @@ HomePage.propTypes = {
   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
-  onChangeUsername: PropTypes.func
+  onChangeUsername: PropTypes.func,
+  todoList: PropTypes.array,
 };
